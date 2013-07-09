@@ -42,7 +42,7 @@ Installation
     ```php
     $emojiService = $this->getServiceLocator()->get('emojimodule_emoji_service');
     $text = "\xF0\x9F\x98\x81 Hello World";
-    $variables = $emojiService->encode($text);    // Output: #1f601# Hello World (You save it to MySQL now)
+    $variables = $emojiService->encode($text);    // Output: #1f601# Hello World (You can save it to MySQL now)
 
     // Variables restore to unified
     $unified = $emojiService->decode($variables); // Output: \xF0\x9F\x98\x81 Hello World
