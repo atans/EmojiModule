@@ -13,7 +13,7 @@ class Emoji extends AbstractHelper implements ServiceLocatorAwareInterface
      */
     protected $emojiService;
 
-    public function ___invoke()
+    public function __invoke()
     {
         return $this->getEmojiService();
     }
