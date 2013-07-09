@@ -1,0 +1,23 @@
+{
+    "name": "atans/emoji-module",
+    "type" : "library",
+    "description" : "An sample Emoji module for Zend Framework 2",
+    "keywords" : ["emoji"],
+    "homepage": "https://github.com/atans/EmojiModule",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Atans Chiu",
+            "email": "atans.chiu@gmail.com",
+            "homepage": "https://github.com/atans",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": ">=2.1.3"
+    },
+    "autoload": {
+        "psr-0": {"EmojiModule\\": "src/"}
+    }
+}
