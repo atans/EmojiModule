@@ -53,5 +53,21 @@ Installation
     // unified to html
     $unifiedToHtml = $emojiService->unifiedToHtml($unified);       // Output: <span class="emoji emoji1f601"></span> Hello World
 
+    return array(
+        'unifiedToHtml' => $unifiedToHtml,
+    );
     ```
 
+4. View
+
+    copy `https://raw.github.com/iamcal/php-emoji/master/emoji.css` and `https://github.com/iamcal/php-emoji/blob/master/emoji.png`
+    to '/public/css/'
+
+    ```php
+    // index.phtml
+    <?php
+    $this->headLink()->appendStylesheet($this->basePath() . '/css/emoji.css');
+    ?>
+
+    <?php echo echo $unifiedToHtml ?>
+    ``
