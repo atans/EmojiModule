@@ -73,7 +73,7 @@ class Emoji implements ServiceLocatorAwareInterface
      * Set unified to variables
      *
      * @param  array $unifiedToVariables
-     * @return $this
+     * @return Emoji
      */
     public function setUnifiedToVariables(array $unifiedToVariables)
     {
@@ -93,7 +93,7 @@ class Emoji implements ServiceLocatorAwareInterface
             foreach ($this->getUnifiedToVariables() as $variable) {
                 if ($match = preg_match('/^#(.+?)#$/', $variable, $matches)) {
                     $code = $matches[1];
-                    $variablesToHtml[$variable] = sprintf('<span class="emoji emoji%s">', $code);
+                    $variablesToHtml[$variable] = sprintf('<span class="emoji emoji%s"></span>', $code);
                 }
             }
             $this->variablesToHtml = $variablesToHtml;
