@@ -50,7 +50,7 @@ Installation
     // Variables to Html
     $variablesToHtml = $emojiService->variablesToHtml($variables); // Output: <span class="emoji emoji1f601"></span> Hello World
 
-    // unified to html
+    // Unified to html
     $unifiedToHtml = $emojiService->unifiedToHtml($unified);       // Output: <span class="emoji emoji1f601"></span> Hello World
 
     return array(
