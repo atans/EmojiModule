@@ -57,16 +57,20 @@ How to use
     public function indexAction() {
       $emojiService = $this->getServiceLocator()->get('emojimodule_emoji_service');
       $text = "\xF0\x9F\x98\x81 Hello World";
-      $variables = $emojiService->encode($text);    // Output: #1f601# Hello World (You can save it to MySQL now)
+      $variables = $emojiService->encode($text);
+      // Output: #1f601# Hello World (You can save it to MySQL now)
 
       // Variables restore to unified
-      $unified = $emojiService->decode($variables); // Output: \xF0\x9F\x98\x81 Hello World
+      $unified = $emojiService->decode($variables);
+      // Output: \xF0\x9F\x98\x81 Hello World
 
       // Variables to Html
-      $variablesToHtml = $emojiService->variablesToHtml($variables); // Output: <span class="emoji emoji1f601"></span> Hello World
+      $variablesToHtml = $emojiService->variablesToHtml($variables);
+      // Output: <span class="emoji emoji1f601"></span> Hello World
 
       // Unified to html
-      $unifiedToHtml = $emojiService->unifiedToHtml($unified);       // Output: <span class="emoji emoji1f601"></span> Hello World
+      $unifiedToHtml = $emojiService->unifiedToHtml($unified);
+      // Output: <span class="emoji emoji1f601"></span> Hello World
 
       return array(
         'unifiedToHtml' => $unifiedToHtml,
