@@ -83,9 +83,13 @@ Installation
 
     <?php echo echo $unifiedToHtml ?>
     ``
+
 5. View Helper
 
     ```php
     // application/index/index/index.phtml
-    <?php echo $this->emoji()->unifiedToHtml('😁 Hello World') ?>
+    <?php
+     echo $this->emoji()->unifiedToHtml('😁 Hello World') // Output: <span class="emoji emoji1f601"></span> Hello World
+    ?>
+
     ```
