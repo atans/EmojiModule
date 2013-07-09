@@ -5,7 +5,7 @@ Introduction
 ------------
 A sample emoji module for Zend Framework 2
 
-1.`😁 Hello World` to :smile:
+1.`😁 Hello World` to :smile: Hello World
 
 2.`😁 Hello World` to `#1f601# Hello World` (You can save it to MySQL < 5.5)
 
