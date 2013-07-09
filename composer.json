@@ -20,6 +20,10 @@
     "autoload": {
         "psr-0": {
             "EmojiModule\\": "src/"
-        }
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+
     }
 }
