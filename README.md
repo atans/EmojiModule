@@ -86,7 +86,7 @@ How to use
     ?>
 
     <?php echo echo $unifiedToHtml ?>
-    ``
+    ```
 
 3. View Helper
 
