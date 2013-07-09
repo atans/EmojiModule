@@ -116,7 +116,7 @@ class Emoji implements ServiceLocatorAwareInterface
         if ($this->unifiedToHtml === null) {
             $unifiedToHtml = array();
             foreach ($this->getUnifiedToVariables() as $unified => $variable) {
-                if ($html = $this->variablesToHtml($variable)) {
+                if ($html = $this->variableToHtml($variable)) {
                     $unifiedToHtml[$unified] = $html;
                 }
             }
@@ -147,13 +147,25 @@ class Emoji implements ServiceLocatorAwareInterface
         if ($this->variablesToHtml === null) {
             $variablesToHtml = array();
             foreach ($this->getUnifiedToVariables() as $variable) {
-                if ($html = $this->variablesToHtml($variable)) {
+                if ($html = $this->variableToHtml($variable)) {
                     $variablesToHtml[$variable] = $html;
                 }
             }
-            $this->variablesToHtml = $variablesToHtml;
+            $this->setVariablesToHtml($variablesToHtml);
         }
         return $this->variablesToHtml;
+    }
+
+    /**
+     * Set variables to html
+     *
+     * @param  array $variablesToHtml
+     * @return Emoji
+     */
+    public function setVariablesToHtml(array $variablesToHtml)
+    {
+        $this->variablesToHtml = $variablesToHtml;
+        return $this;
     }
 
     /**
@@ -169,18 +181,6 @@ class Emoji implements ServiceLocatorAwareInterface
         }
 
         return false;
-    }
-
-    /**
-     * Set variables to html
-     *
-     * @param  array $variablesToHtml
-     * @return Emoji
-     */
-    public function setVariablesToHtml(array $variablesToHtml)
-    {
-        $this->variablesToHtml = $variablesToHtml;
-        return $this;
     }
 
     /**
