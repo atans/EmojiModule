@@ -7,7 +7,7 @@ A sample emoji module for Zend Framework 2
 
 
 Installation
------------
+------------
 
 #### With composer
 
@@ -36,21 +36,22 @@ Installation
         ),
       );
     ```
-3. Call emojimodule_emoji_service in a controller
+
+3. Call `emojimodule_emoji_service` in a controller
 
     ```php
     $emojiService = $this->getServiceLocator()->get('emojimodule_emoji_service');
     $text = "\xF0\x9F\x98\x81 Hello World";
-    $variables = $emojiService->encode($text);    // #1f601# Hello World (You save it to MySQL now)
+    $variables = $emojiService->encode($text);    // Output: #1f601# Hello World (You save it to MySQL now)
 
     // Variables restore to unified
-    $unified = $emojiService->decode($variables); // \xF0\x9F\x98\x81 Hello World
+    $unified = $emojiService->decode($variables); // Output: \xF0\x9F\x98\x81 Hello World
 
     // Variables to Html
-    $variablesToHtml = $emojiService->variablesToHtml($variables);  // <span class="emoji emoji1f601"></span> Hello World
+    $variablesToHtml = $emojiService->variablesToHtml($variables); // Output: <span class="emoji emoji1f601"></span> Hello World
 
     // unified to html
-    $unifiedToHtml = $emojiService->unifiedToHtml($unified);        // <span class="emoji emoji1f601"></span> Hello World
+    $unifiedToHtml = $emojiService->unifiedToHtml($unified);       // Output: <span class="emoji emoji1f601"></span> Hello World
 
     ```
 
