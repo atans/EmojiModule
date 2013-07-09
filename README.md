@@ -47,7 +47,11 @@ Installation
       );
     ```
 
-3. Call `emojimodule_emoji_service` in a controller
+
+How to use
+-----------
+
+1. Call `emojimodule_emoji_service` in a controller
 
     ```php
     public function indexAction() {
@@ -70,7 +74,7 @@ Installation
     }
     ```
 
-4. View
+2. View
 
     copy `https://raw.github.com/iamcal/php-emoji/master/emoji.css` and `https://github.com/iamcal/php-emoji/blob/master/emoji.png`
     to '/public/css/'
@@ -84,7 +88,7 @@ Installation
     <?php echo echo $unifiedToHtml ?>
     ``
 
-5. View Helper
+3. View Helper
 
     ```php
     // application/index/index/index.phtml
