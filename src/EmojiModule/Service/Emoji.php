@@ -14,6 +14,11 @@ class Emoji implements ServiceLocatorAwareInterface
     /**
      * @var array
      */
+    protected $unifiedToHtml = null;
+
+    /**
+     * @var array
+     */
     protected $variablesToUnified = null;
 
     /**
@@ -27,33 +32,53 @@ class Emoji implements ServiceLocatorAwareInterface
     protected $serviceLocator;
 
     /**
-     * Unified to variables
+     * Emoji encode to #1f601#
      *
      * @param  string $text
      * @return string
      */
-    public function unifiedToVariables($text)
+    public function encode($text)
     {
         $unifiedToVariables = $this->getUnifiedToVariables();
         return str_replace(array_keys($unifiedToVariables), $unifiedToVariables, $text);
     }
 
-    public function variablesToHtml($text)
-    {
-        $variablesToHtml = $this->getVariablesToHtml();
-        return str_replace(array_keys($variablesToHtml), $variablesToHtml, $text);
-    }
-
     /**
-     * Variables to unified
+     * Emoji decode to \xF0\x9F\x98\x81
      *
      * @param  string $text
      * @return string
      */
-    public function variablesToUnified($text)
+    public function decode($text)
     {
         $variablesToUnified = $this->getVariablesToUnified();
         return str_replace(array_keys($variablesToUnified), $variablesToUnified, $text);
+    }
+
+    /**
+     * Unified to html
+     * "\xF0\x9F\x98\x81" to "<span class="emoji emoji1f601"></span>"
+     *
+     * @param  string $text
+     * @return string
+     */
+    public function unifiedToHtml($text)
+    {
+        $unifiedToHtml = $this->getUnifiedToHtml();
+        return str_replace(array_keys($unifiedToHtml), $unifiedToHtml, $text);
+    }
+
+    /**
+     * Variables convert to html
+     * #1f601# to "<span class="emoji emoji1f601"></span>"
+     *
+     * @param  string $text
+     * @return text
+     */
+    public function variablesToHtml($text)
+    {
+        $variablesToHtml = $this->getVariablesToHtml();
+        return str_replace(array_keys($variablesToHtml), $variablesToHtml, $text);
     }
 
     /**
@@ -82,6 +107,37 @@ class Emoji implements ServiceLocatorAwareInterface
     }
 
     /**
+     * Get unified to html
+     *
+     * @return array|null
+     */
+    public function getUnifiedToHtml()
+    {
+        if ($this->unifiedToHtml === null) {
+            $unifiedToHtml = array();
+            foreach ($this->getUnifiedToVariables() as $unified => $variable) {
+                if ($html = $this->variablesToHtml($variable)) {
+                    $unifiedToHtml[$unified] = $html;
+                }
+            }
+            $this->setUnifiedToHtml($unifiedToHtml);
+        }
+        return $this->unifiedToHtml;
+    }
+
+    /**
+     * Set unified to html
+     *
+     * @param  array $unifiedToHtml
+     * @return Emoji
+     */
+    public function setUnifiedToHtml(array $unifiedToHtml)
+    {
+        $this->unifiedToHtml = $unifiedToHtml;
+        return $this;
+    }
+
+    /**
      * Get variable to html
      *
      * @return array
@@ -91,14 +147,28 @@ class Emoji implements ServiceLocatorAwareInterface
         if ($this->variablesToHtml === null) {
             $variablesToHtml = array();
             foreach ($this->getUnifiedToVariables() as $variable) {
-                if ($match = preg_match('/^#(.+?)#$/', $variable, $matches)) {
-                    $code = $matches[1];
-                    $variablesToHtml[$variable] = sprintf('<span class="emoji emoji%s"></span>', $code);
+                if ($html = $this->variablesToHtml($variable)) {
+                    $variablesToHtml[$variable] = $html;
                 }
             }
             $this->variablesToHtml = $variablesToHtml;
         }
         return $this->variablesToHtml;
+    }
+
+    /**
+     * A variable to html
+     *
+     * @param  string $variable
+     * @return string|false
+     */
+    protected function variableToHtml($variable)
+    {
+        if ($match = preg_match('/^#(.+?)#$/', $variable, $matches)) {
+            return sprintf('<span class="emoji emoji%s"></span>', $matches[1]);
+        }
+
+        return false;
     }
 
     /**
