@@ -50,22 +50,24 @@ Installation
 3. Call `emojimodule_emoji_service` in a controller
 
     ```php
-    $emojiService = $this->getServiceLocator()->get('emojimodule_emoji_service');
-    $text = "\xF0\x9F\x98\x81 Hello World";
-    $variables = $emojiService->encode($text);    // Output: #1f601# Hello World (You can save it to MySQL now)
+    public function indexAction() {
+      $emojiService = $this->getServiceLocator()->get('emojimodule_emoji_service');
+      $text = "\xF0\x9F\x98\x81 Hello World";
+      $variables = $emojiService->encode($text);    // Output: #1f601# Hello World (You can save it to MySQL now)
 
-    // Variables restore to unified
-    $unified = $emojiService->decode($variables); // Output: \xF0\x9F\x98\x81 Hello World
+      // Variables restore to unified
+      $unified = $emojiService->decode($variables); // Output: \xF0\x9F\x98\x81 Hello World
 
-    // Variables to Html
-    $variablesToHtml = $emojiService->variablesToHtml($variables); // Output: <span class="emoji emoji1f601"></span> Hello World
+      // Variables to Html
+      $variablesToHtml = $emojiService->variablesToHtml($variables); // Output: <span class="emoji emoji1f601"></span> Hello World
 
-    // Unified to html
-    $unifiedToHtml = $emojiService->unifiedToHtml($unified);       // Output: <span class="emoji emoji1f601"></span> Hello World
+      // Unified to html
+      $unifiedToHtml = $emojiService->unifiedToHtml($unified);       // Output: <span class="emoji emoji1f601"></span> Hello World
 
-    return array(
+      return array(
         'unifiedToHtml' => $unifiedToHtml,
-    );
+      );
+    }
     ```
 
 4. View
@@ -74,10 +76,16 @@ Installation
     to '/public/css/'
 
     ```php
-    // index.phtml
+    // application/index/index/index.phtml
     <?php
     $this->headLink()->appendStylesheet($this->basePath() . '/css/emoji.css');
     ?>
 
     <?php echo echo $unifiedToHtml ?>
     ``
+5. View Helper
+
+    ```php
+    // application/index/index/index.phtml
+    <?php echo $this->emoji()->unifiedToHtml('😁 Hello World') ?>
+    ```
