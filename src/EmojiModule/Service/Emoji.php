@@ -93,7 +93,7 @@ class Emoji implements ServiceLocatorAwareInterface
             foreach ($this->getUnifiedToVariables() as $variable) {
                 if ($match = preg_match('/^#(.+?)#$/', $variable, $matches)) {
                     $code = $matches[1];
-                    $variablesToHtml[$variable] = sprintf('<span class="emoji emoji-%s">', $code);
+                    $variablesToHtml[$variable] = sprintf('<span class="emoji emoji%s">', $code);
                 }
             }
             $this->variablesToHtml = $variablesToHtml;
