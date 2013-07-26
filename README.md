@@ -86,7 +86,7 @@ How to use
     ```php
     // application/index/index/index.phtml
     <?php
-    $this->headLink()->appendStylesheet($this->basePath() . '/css/emoji.css');
+    $this->headLink()->appendStylesheet($this->basePath() . '/public/css/emoji.css');
     ?>
 
     <?php echo echo $unifiedToHtml ?>
