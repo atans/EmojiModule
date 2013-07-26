@@ -191,7 +191,7 @@ class Emoji implements ServiceLocatorAwareInterface
     public function getVariablesToUnified()
     {
         if ($this->variablesToUnified === null) {
-            $this->setEmojiVariables(array_flip($this->getUnifiedToVariables()));
+            $this->setVariablesToUnified(array_flip($this->getUnifiedToVariables()));
         }
         return $this->variablesToUnified;
     }
