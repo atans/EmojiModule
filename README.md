@@ -1,6 +1,8 @@
 EmojiModule for Zend Framework 2
 ================================
 
+Master: [![Build Status](https://secure.travis-ci.org/atans/EmojiModule.png?branch=master)](http://travis-ci.org/atans/EmojiModule)
+
 Introduction
 ------------
 A sample emoji module for Zend Framework 2
