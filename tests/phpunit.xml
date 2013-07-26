@@ -1,0 +1,9 @@
+<phpunit bootstrap="bootstrap.php" colors="true">
+
+    <testsuite name="EmojiModule Test Suite">
+
+        <directory>./EmojiModuleTest</directory>
+
+    </testsuite>
+
+</phpunit>
