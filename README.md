@@ -84,8 +84,8 @@ How to use
     to '/public/css/'
 
     ```php
-    // application/index/index/index.phtml
     <?php
+    // application/index/index/index.phtml
     $this->headLink()->appendStylesheet($this->basePath() . '/public/css/emoji.css');
     ?>
 
@@ -95,8 +95,9 @@ How to use
 3. View Helper
 
     ```php
-    // application/index/index/index.phtml
+    
     <?php
+    // application/index/index/index.phtml
      echo $this->emoji()->unifiedToHtml('😁 Hello World')
      // Output: <span class="emoji emoji1f601"></span> Hello World
     ?>
