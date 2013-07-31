@@ -90,6 +90,7 @@ How to use
     ```php
     <?php
     // application/index/index/index.phtml
+
     $this->headLink()->appendStylesheet($this->basePath() . '/public/css/emoji.css');
     ?>
 
@@ -99,11 +100,11 @@ How to use
 3. View Helper
 
     ```php
-    
     <?php
     // application/index/index/index.phtml
-     echo $this->emoji()->unifiedToHtml('😁 Hello World')
-     // Output: <span class="emoji emoji1f601"></span> Hello World
+
+    echo $this->emoji()->unifiedToHtml('😁 Hello World')
+    // Output: <span class="emoji emoji1f601"></span> Hello World
     ?>
 
     ```
